@@ -19,7 +19,7 @@ function onClick() {
 </script>
 
 <button 
-    class="m-1 rounded {selected ? 'bg-opacity-80 bg-blue-300' : 'bg-white bg-opacity-50'} justify-center" 
+    class="m-1 px-2 py-1 rounded font-semibold text-sm text-slate-200 border-transparent justify-center hover:ring {selected ? 'bg-opacity-80 bg-blue-300' : 'bg-slate-700 bg-opacity-50'}" 
     on:click={() => onClick()}
 >{name}</button>
 

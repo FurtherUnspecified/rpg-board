@@ -1,26 +1,24 @@
 <script lang="ts">
-import type { TagState } from "$lib/types/TagState";
-
 import TagButton from "./TagButton.svelte";
 
 export let tags: string[]; 
-
-let search: string = "";
-let selectedTags: Set<string> = new Set();
-
-function onToggle(tag: TagState) {
-    if (tag.toggled) {
-        selectedTags.delete(tag.name);
+export let search: string = "";
+export let selectedTags: Set<string> = new Set();
+function onToggle(tag: string) {
+    if (selectedTags.has(tag)) {
+        selectedTags.delete(tag);
     } else {
-        selectedTags.add(tag.name);
+        selectedTags.add(tag);
     }
-    console.log(tag.toggled)
+    selectedTags = selectedTags;
 }
 </script>
 
-<input bind:value={search}>
-<div>
+<div class="flex justify-center">
+    <input class="w-1/2" bind:value={search}>
+</div>
+<div class="m1 flex justify-center">
     {#each tags as tag}
-    <TagButton name={tag}></TagButton>
+    <TagButton name={tag} on:toggle={() => onToggle(tag)}></TagButton>
     {/each}
 </div>
