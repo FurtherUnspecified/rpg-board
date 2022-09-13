@@ -8,6 +8,6 @@ export let cards: Card[];
 
 <div class="place-items-center">
     {#each cards as card}
-    <CardComp card={card}></CardComp>
+    <CardComp card={card} on:add={(card) => console.log(card)} enableAddRemove={true}></CardComp>
     {/each}
 </div>
